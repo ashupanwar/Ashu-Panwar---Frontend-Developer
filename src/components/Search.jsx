@@ -88,11 +88,11 @@ const Search = (props) => {
     
                 let launchCondition = launchFilter=='all'? true : rocket.first_flight.includes(launchFilter.toString())
                 let activeCondition = statusFilter=='all'? true : statusFilter=='active' ? rocket.active : !rocket.active
-                let typeCondition = typeFilter=='all'? true : rocket.rocket_type===typeFilter
+                //let typeCondition = typeFilter=='all'? true : rocket.rocket_type===typeFilter  
+                
+                //console.log(searchCondition,launchCondition,activeCondition,typeCondition)
     
-                console.log(rocket.rocket_type,typeFilter);
-    
-                return searchCondition && launchCondition && activeCondition && typeCondition
+                return searchCondition && launchCondition && activeCondition
             })
     
             props.setListOfRockets(newList);
@@ -113,7 +113,7 @@ const Search = (props) => {
             <FilterContainer>
                 <Select label="Status" options={["all","active","not active"]} setFilter={setStatusFilter}/>
                 <Select label="Launch" options={["all",2006,2010,2018,2021]} setFilter={setLaunchFilter}/>
-                <Select label="Type" options={["all","rocket","capsule"]} setFilter={setTypeFilter}/>
+                <Select label="Type" options={["all","rocket"]} setFilter={setTypeFilter}/>
             </FilterContainer>
             
         </Wrapper>
